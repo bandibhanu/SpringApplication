@@ -11,53 +11,59 @@
 	<!-- <context:component-scan base-package="com.capgemini.app"/> -->
 
 
-	<bean id="organization"
-		class="com.capgemini.app.bean.Organization">
-		<property name="boardMembers">
-			<list>
-				<value>bhanu</value>
-				<value>shabzan</value>
+	<!-- <bean id="bhanu" class="com.capgemini.app.bean.Organization"> <property 
+		name="deparmentId"> <value>5465</value> </property> <p </bean> -->
 
-			</list>
-		</property>
+	<context:component-scan
+		base-package="com.capgemini.app" />
 
-		<property name="branchManagers">
-			<map>
-				<entry key="mumbai" value="bhanu" />
-				<entry key="hyderabad" value="bhanu bandi" />
-			</map>
-		</property>
-		<property name="cities">
-			<set>
-				<value>hyderabad</value>
-				<value>mumbai</value>
-			</set>
-		</property>
-		<property name="dateOfEstablishment">
-			<bean class="java.time.LocalDate" factory-method="parse">
-				<constructor-arg value="1997-02-16">
 
-				</constructor-arg>
+	<!-- <context:property-placeholder  location="IPAdress.properties" />  -->
+	<util:properties id="prop"
+		location="IPAdress.properties" />
+	<util:list id="list">
+		<value>bhanu</value>
+		<value>shabzan</value>
+	</util:list>
 
-			</bean>
-		</property>
-		<property name="ipAddresses">
-		<util:properties location="classpath:IPAdress.properties"></util:properties>
-		</property>
-		<property name="listed" value="true">
+	<util:set id="set">
+		<value>Hyderabad</value>
+		<value>mumbai</value>
+	</util:set>
 
-		</property>
-		<property name="name" value="bhanu solutions"></property>
-		<property name="orgId" value="9505"></property>
-		<property name="shareValue" value="100 "></property>
+	<util:map id="map">
+		<entry key="mumbai" value="bhanu" />
+		<entry key="hyderabad" value="bhanu bandi" />
+	</util:map>
+
+	<bean id="date" class="java.time.LocalDate" factory-method="parse">
+		<constructor-arg value="1997-02-16"/>
 	</bean>
-
-	<!-- <bean id="organization2" class="com.capgemini.app.bean.Organization"> 
-		<constructor-arg value=""/> <constructor-arg ref=""/> </bean> -->
-
+	
+	
 </beans>
 
 
 
 
+
+
+
+
+
+<!-- <bean id="organization"
+		class="com.capgemini.app.bean.Organization" scope="prototype">
+		<property name="boardMembers"> <list> </list> </property>
+		<property name="listed" value="true">
+		</property>
+		<property name="name" value="bhanu solutions"></property> <property 
+			name="orgId" value="9505"></property>
+		<property name="shareValue" value="100 "></property>
+	</bean>
+
+	<bean id="organization1" class="com.capgemini.app.bean.Organization"> 
+		<constructor-arg index="1" value="google" /> <constructor-arg index="0" value="143" 
+		/> </bean> <bean id="organization2" class="com.capgemini.app.bean.Organization"> 
+		<constructor-arg> <set> </set> </constructor-arg> </bean>
+ -->
 
